@@ -1,17 +1,11 @@
 from typing import List
-
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
-
 from . import crud, models, schemas
 from .database import SessionLocal, engine
 
-
 models.Base.metadata.create_all(bind=engine)
-
-
 app = FastAPI()
-
 
 # Dependency
 def get_db():
@@ -55,3 +49,30 @@ def create_item_for_user(
 def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     items = crud.get_items(db, skip=skip, limit=limit)
     return items
+
+
+@app.get("/tests/", response_model=List[schemas.Test])
+def read_tests(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    tests = crud.get_tests(db, skip=skip, limit=limit)
+    return tests
+
+@app.post("/tests/", response_model=schemas.Test)
+def create_test(user: schemas.TestCreate, db: Session = Depends(get_db)):
+    db_test = crud.get_test_by_email(db, email=user.email)
+    if db_test:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    return crud.create_test(db=db, test=user)
+
+
+""" 
+
+
+
+@app.get("/users/{user_id}", response_model=schemas.User)
+def read_user(user_id: int, db: Session = Depends(get_db)):
+    db_user = crud.get_user(db, user_id=user_id)
+    if db_user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return db_user
+
+ """

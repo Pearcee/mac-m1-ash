@@ -1,5 +1,7 @@
+from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel
+
 class ItemBase(BaseModel):
     title: str
     description: Optional[str] = None
@@ -27,3 +29,22 @@ class User(UserBase):
 
     class Config:
         orm_mode = True
+
+
+class TestBase(BaseModel):
+    email: str
+
+class TestCreate(UserBase):
+    password: str
+
+class Test(UserBase):
+    id: int
+    is_active: bool
+    items: List[Item] = []
+    signup_ts: datetime
+    friends: List[int] = []
+
+    class Config:
+        orm_mode = True
+
+

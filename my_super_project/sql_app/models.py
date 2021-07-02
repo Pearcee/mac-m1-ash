@@ -1,14 +1,11 @@
+from datetime import datetime
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from .database import Base
-
-
-
+from typing import List, Optional
 
 class User(Base):
-
     __tablename__ = "users"
-
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True, index=True)
@@ -17,12 +14,8 @@ class User(Base):
 
     items = relationship("Item", back_populates="owner")
 
-
-
 class Item(Base):
-
     __tablename__ = "items"
-
 
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
@@ -30,3 +23,17 @@ class Item(Base):
     owner_id = Column(Integer, ForeignKey("users.id"))
 
     owner = relationship("User", back_populates="items")
+
+ 
+class Test(Base):
+    __tablename__ = "test"
+
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String, unique=True, index=True)
+    hashed_password = Column(String)
+    signup_ts: Optional[datetime] = None
+    friends: List[int] = []
+    is_active = Column(Boolean, default=True)
+
+
+
