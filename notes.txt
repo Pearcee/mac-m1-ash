@@ -6,3 +6,32 @@ git commit -m "first commit"
 Git push
 
 uvicorn sql_app.main:app --reload
+
+# Django REST framework is a powerful and flexible toolkit for building Web APIs
+pip install djangorestframework
+pip install markdown
+pip install django-filter
+
+git clone https://github.com/encode/django-rest-framework
+python manage.py startapp snippets
+
+https://medium.com/swlh/build-your-first-rest-api-with-django-rest-framework-e394e39a482c
+django-admin startproject mysite
+python manage.py runserver
+python manage.py startapp myapi
+python manage.py makemigrations && python manage.py migrate
+python manage.py createsuperuser --username paul --email paul@gmail.com
+./manage.py drf_create_token paul
+
+
+07 https://simpleisbetterthancomplex.com/tutorial/2018/11/22/how-to-implement-token-authentication-using-django-rest-framework.html
+
+curl http://127.0.0.1:8000/hello/
+brew install httpie
+http http://127.0.0.1:8000/hello/
+python manage.py createsuperuser --username vitor --email vitor@example.com
+python manage.py drf_create_token vitor
+enerated token 2896f62fb6a706ee81d973e358e3f95a1741fd11 for user vitor
+http http://127.0.0.1:8000/hello/ 'Authorization: Token 2896f62fb6a706ee81d973e358e3f95a1741fd11'
+curl http://127.0.0.1:8000/hello/ -H 'Authorization: Token 2896f62fb6a706ee81d973e358e3f95a1741fd11'
+http post http://127.0.0.1:8000/api-token-auth/ username=vitor password=s

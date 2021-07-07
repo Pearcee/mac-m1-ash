@@ -65,3 +65,10 @@ python manage.py collectstatic
 
 source ../env/bin/activate
 manage.py runserver
+
+pip install -r requirements.txt
+
+https://auth0.com/docs/quickstart/backend/django/01-authorization
+django-admin startproject apiexample
+cd apiexample
+python manage.py startapp auth0authorization
