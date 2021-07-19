@@ -1,0 +1,41 @@
+{% extends 'posts/base.html' %}
+{% block content %}
+{% load static %}
+{% load mathfilters %}
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<br><br><br>
+<div class="feeds">
+	<table>
+		<tr>
+			<th>Time</th>
+			<th>Used</th>
+			<th>Cost</th>
+			<th>Total</th>
+		</tr>
+		{% for result in results %}
+			<tr>
+				<td id="{{result.id}}">{{result.time_from |date:"D Y M d H:i" }}</td>
+				<td>{{result.consumption |floatformat:2}}</td>
+				<td>{{result.value|floatformat:2}}</td>
+				<td>{{result.value |mul:result.consumption |floatformat:2}}</td>
+			</tr>
+		{% endfor %}
+	</table>
+</div>
+{% endblock %}
