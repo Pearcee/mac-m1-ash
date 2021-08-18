@@ -1,0 +1,30 @@
+//
+@import "colors";
+@import "card";
+@import "nav";
+@import "reset";
+
+
+/* Use the variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: $textcolor;
+  font-family: $fontfamily;
+  font-size: $fontsize;
+}
+
+body {
+  background-color: $bgcolor;
+  color: $textcolor;
+}
+
+li {
+  list-style: circle;
+}
+
+.list {
+  list-style: square;
+}
+

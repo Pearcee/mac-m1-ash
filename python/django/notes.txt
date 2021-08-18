@@ -1,3 +1,4 @@
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -8,6 +9,17 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+requirements.txt
+Django
+pylint
+autopep8
+django-crispy-forms
+whitenoise
+psycopg2-binary
+
+
+ 'whitenoise.middleware.WhiteNoiseMiddleware',
 
 https://code.visualstudio.com/docs/python/tutorial-django
 

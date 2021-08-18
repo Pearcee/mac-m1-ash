@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2196F3">
+    <meta name="description" content="pwa">
+    <title>Task List</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
+
+</head>
+
+<body class="light-theme">
+    <h1>Task List</h1>
+    <p id="msg">Current tasks:</p>
+    <ul>
+        <li class="list">Add visual styles</li>
+        <li class="list">Add light and dark themes</li>
+        <li>Enable switching the theme</li>
+    </ul>
+    <div>
+        <button class="btn">Dark</button>
+    </div>
+    <script src="app.js"></script>
+
+    <noscript>You need to enable JavaScript to view the full site.</noscript>
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+          // Use the window load event to keep the page load performant
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js');
+          });
+        }
+        </script>
+</body>
+
+</html>

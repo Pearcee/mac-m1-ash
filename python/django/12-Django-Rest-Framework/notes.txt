@@ -1,0 +1,7 @@
+django-admin startproject my_awesome_django_project
+cd my_awesome_django_project 
+django-admin startapp my_awesome_api
+
+pip install django-cors-headers
+
+
